@@ -25,6 +25,19 @@ def search(root, value):
     else:
         search(root.right, value)  
     
+def delete(root, value):
+    if (root == None):
+        return root 
+    if(root.data > value):
+        root.left = delete(root.left, value)
+    if(root.data < value):
+       root.right =  delete(root.right, value)
+
+    else :
+        if(root.left == None):
+            return root.right
+        if(root.right == None):
+            return root.left
 
 def InOrder(root):
     if (root != None):
