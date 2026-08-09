@@ -36,8 +36,19 @@ def delete(root, value):
     else :
         if(root.left == None):
             return root.right
-        if(root.right == None):
+        elif(root.right == None):
             return root.left
+        else :
+            succ = get_succesor(root)
+            root.data = succ.data
+            root.right = delete(root.right, succ.data)
+    return root
+
+def get_succesor(root):
+    root = root.right
+    while(root != None and root.left != None):
+        root = root.left
+    return root
 
 def InOrder(root):
     if (root != None):
@@ -62,4 +73,8 @@ root = insert(root, 18)
 root = insert(root, 25)
 root = insert(root, 50)
 
+InOrder(root)
+
+delete(root, 12)
+print('\n')
 InOrder(root)
