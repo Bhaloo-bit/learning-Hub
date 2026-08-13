@@ -60,7 +60,7 @@ obj.insertAtEnd(10)
 obj.insertAtEnd(20)        
 obj.insertAtEnd(30)  
 obj.insertAtBegn(5) 
-# obj.insertAtMid(40,20) 
+obj.insertAtMid(40,20) 
 obj.deleteLL(30) 
 
 
