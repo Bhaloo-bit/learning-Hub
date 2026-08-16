@@ -27,7 +27,7 @@ class DoublyLL :
         if(self.head ==None):
             self.head = temp
             return
-        temp.next = self.head
+        temp.next = self.head #when insert element is the first one in DLL
         self.head.prev = temp
         self.head = temp
 

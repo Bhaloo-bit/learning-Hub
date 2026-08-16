@@ -48,7 +48,8 @@ class SinglyLinkedlist:
                 prev = t1
                 t1 = t1.next
         if(t1.data == value):
-            prev.next = None
+           prev.next = None
+
     def printLL(self):
         t1 = self.head
         while(t1.next != None):
