@@ -1,0 +1,22 @@
+
+document.getElementbyID('title')
+title = document.getElementbyID('title')
+console.log(title)
+
+document methods
+title.style.backgroundcolor= 'green' (give input as key & pair)
+
+title.innerText
+ -only visible content is given as output in innerText 
+title.textContent
+ -give output of all the context along with that is hidden with CSS property 
+title.innerHTML
+ -give output of all the content and all the tags including in it
+ 
+
+ ***** Important Quary Selector *****
+
+ document.quarySelector(heading)
+ -return only one and frist heading 
+ document.quarySelectorAll(heading)
+ -return all the heading in given section
