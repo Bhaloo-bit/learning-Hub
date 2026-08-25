@@ -8,5 +8,3 @@ def home(request):
 def about(request):
     return HttpResponse("hello world, Your at Bhumi About page")  
 
-def contact(request):
-    return render(render, "index1.html")

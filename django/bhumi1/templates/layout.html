@@ -1,3 +1,4 @@
+{% load static tailwind_tags %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -5,9 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Bhumi aur Django</title>
+    {% tailwind_css %}
+    <title>
+        {% block title %} 
+        deafult value
+        {% endblock  %}
+    </title>
 </head>
 <body>
-    <h1>Session 1 Django</h1>
+   <nav> this is django version 1 navbar</nav>
+    {% block content  %}{% endblock  %}
 </body>
 </html>

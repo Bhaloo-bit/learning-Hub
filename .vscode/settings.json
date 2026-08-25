@@ -1,3 +1,17 @@
 {
     "liveServer.settings.port": 5502
 }
+
+{
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "django-html": "html",
+    "python": "html"
+  },
+  "files.associations": {
+    "**/templates/**/*.html": "django-html"
+  },
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  }
+}

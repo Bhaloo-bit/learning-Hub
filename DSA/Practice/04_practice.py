@@ -1,7 +1,6 @@
 # stack -  liner data structure && crud opertation
 # len , insertion, peek func to see  last entered element, pull
-
-'''class Stack :
+class Stack :
     def __init__(self):
         self.list = []
 
@@ -84,7 +83,7 @@ obj.deletion()
 obj.printt()
 
 
-         '''
+         
 
 ## D-Queue linear data struture allow insertion & deletion at its both end
 
