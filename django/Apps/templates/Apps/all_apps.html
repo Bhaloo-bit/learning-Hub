@@ -7,4 +7,14 @@ Home Apps page
 
 {% block content %}
 <h1>Bhumi aur Django | Home of Apps page</h1>
+<div class ="grid grid-cols-3 gap-4 m-4">
+{% for chai in chais%}
+    <div class ="bg-white-200 p-5">
+
+        <img src="{{chai.image.url}}" alt= "">
+        <h3>{{chai.name}} </h3>
+    </div>
+{% endfor %}
+</div>
 {% endblock  %}
+
