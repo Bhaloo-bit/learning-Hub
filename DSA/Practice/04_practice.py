@@ -1,6 +1,6 @@
 # stack -  liner data structure && crud opertation
 # len , insertion, peek func to see  last entered element, pull
-class Stack :
+'''class Stack :
     def __init__(self):
         self.list = []
 
@@ -172,4 +172,19 @@ cq.dequeue()
 cq.dequeue()
 cq.dequeue()
 cq.dequeue()
-cq.dequeue()
+cq.dequeue()'''
+
+def twoSum(nums, target):
+        i = 0
+        n = len(nums)
+        j = n-1
+        while(i < j):
+            if(nums[i]+nums[j] == target):
+                return [i,j]
+            elif(nums[i]+nums[j] > target):
+                j-=1
+            elif (nums[i]+nums[j] < target):
+                i+=1
+        print [i,j]
+
+twoSum([2,7,11,15],9)            
