@@ -1,0 +1,28 @@
+CREATE DATABASE startersql;  // to make new DATABASE
+use startersql // to use DATABASE
+
+
+// Creating a Table
+
+CREATE TABLE users(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    gender ENUM('Male', 'Female', 'Other'),
+    date_of_birth DATE<
+    created_at TIMESTAMP DEFALUT CURRENT_TIMESTAMP
+);
+
+SELECT * FROM users;
+
+DROP DATABASE <database name>;
+
+Constraints Explained
+
+AUTO_INCREMENT : automatically generates 1a unique numbers for each row
+PRIMARY KEY : Uniquiely identifies each row in the Table
+NOT NULL : Ensures a column cannot have a NULL value
+UNIQUE : Ensures all values in a columbs are different 
+DEFALUT : Sets a defaults value for a column i f no value is provided eg
+created_at TIMESTAMP DEFALUT CURRENT_TIMESTAMP , is_active BOOLEAN
+DEFALUT TIME
