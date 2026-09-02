@@ -26,3 +26,5 @@ UNIQUE : Ensures all values in a columbs are different
 DEFALUT : Sets a defaults value for a column i f no value is provided eg
 created_at TIMESTAMP DEFALUT CURRENT_TIMESTAMP , is_active BOOLEAN
 DEFALUT TIME
+
+
