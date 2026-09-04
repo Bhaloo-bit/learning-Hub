@@ -1,0 +1,18 @@
+
+
+{% block content%}
+test content for froms 
+<form method ="POST">
+    {{ {%csrf_token%} }}
+    {{form.as_p}}
+   <button type ="submit">Search </button>
+</form>
+
+{% if stores %}
+    <h2>Stores available</h2>
+    <ul>
+        {% for store in stores %}
+            <li> {{store.name}} --{{store.locate}} </li>
+        {% endfor%}
+    </ul>    
+{% endblock %}   

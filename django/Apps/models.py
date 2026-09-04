@@ -25,14 +25,15 @@ class ChaiVarity(models.Model):
 
 class ChaiReview(models.Model):
     chai = models.ForeignKey(ChaiVarity, on_delete=models.CASCADE, related_name='reviews')
+    #chai = models.ForeignKey(ChaiVarity, on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
     rating = models.IntegerField()
     comment= models.TextField()
     date_added = models.DateTimeField(default=timezone.now)
 
 
-def __str__(self):
-    return f'{self.user.username} review for {self.chai.name}'
+    def __str__(self):
+        return f'{self.user.username} review for {self.chai.name}'
     
 
 ## Many to many    
