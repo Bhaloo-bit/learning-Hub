@@ -1,8 +1,53 @@
-from fastapi import FastAPI, HTTPException, Response
+from fastapi import FastAPI, HTTPException, Response, Depends, Query
 from datetime import datetime
 from random import randint
+from typing import Any, Annotated, Generic, TypeVar
+from contextlib import asynccontextmanager
+from pydantic import BaseModel
 
-app = FastAPI()
+
+from sqlmodel import Field, Session, SQLModel, create_engine, select
+
+class Campaign(SQLModel, table=True):
+     camapaign_id : int | None = Field(default=None, primary_key=True)
+     name : str = Field(index= True)
+     due_date: datetime | None = Field(default=None, index= True)
+     created_at: datetime  = Field(default_factory=lambda: datetime.now(), nullable=True, index= True)
+
+class CampaignCreate(SQLModel):
+     name: str
+     due_date: datetime | None = None
+          
+
+sqlite_file_name = "database.db"   #file name 
+sqlite_url = f"sqlite:///{sqlite_file_name}" # fileUrl
+
+connect_args = {"check_same_thread": False} #engine to make the connections
+engine = create_engine(sqlite_url, connect_args=connect_args) # engine itself
+
+def create_db_and_table():
+     SQLModel.metadata.create_all(engine)
+
+def get_session():
+     with Session(engine)as session:
+          yield session  
+
+SessionDep = Annotated[Session, Depends(get_session)]
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+     create_db_and_table()
+     with Session(engine) as session:
+          if not session.exec(select(Campaign)).first():
+               session.add_all([
+                    Campaign(name="summer Launch", due_date= datetime.now()),
+                    Campaign(name="pre-winter Launch", due_date= datetime.now())
+               ])
+               session.commit()
+     yield
+     
+
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 def home():
@@ -25,7 +70,54 @@ data = [
     }
     ]
 
-@app.get("/campaigns")
+T = TypeVar("T")
+class Responsee(BaseModel, Generic[T]):
+        data : T
+
+@app.get("/campaigns", response_model=Responsee[list[Campaign]])
+async def read_campaigns(session: SessionDep):
+     data = session.exec(select(Campaign)).all()
+     return {"data": data}
+
+@app.get("/campaigns/{id}", response_model= Responsee[Campaign])
+async def read_campaign(id: int , session: SessionDep):
+     data = session.get(Campaign, id)
+     if not data:
+         raise HTTPException(status_code=404,detail="code nhi chalega")
+     return {"data": data}
+
+@app.post("/campaigns", status_code=201, response_model=Responsee[Campaign])
+async def create_campaign(campaign: CampaignCreate, session= SessionDep):
+     db_campaign = Campaign.model_validate(campaign)
+     session.add(campaign)
+     session.commit()
+     session.refresh(campaign)
+     return {"data": db_campaign}
+
+@app.put("/campaigns/{id}", response_class=Responsee[Campaign])
+async def update_campaign(campaign_id: int , campaign: CampaignCreate, session: SessionDep):
+     data = session.get("campaign", campaign_id)
+     if not data:
+          raise HTTPException(status_code=404,detail="lala tera code fatt gaya")
+     data.name = campaign.name   
+     data.due_date = campaign.due_date
+     session.add(data)
+     session.commit
+     session.refresh(data)
+
+     return {"campaign": data}
+
+@app.delete("/campaings/{id}", status_code=204)
+async def delete_campaings(id : int, session: SessionDep):
+     data = session.get(Campaign, id)
+     if not data:
+          raise HTTPException(status_code=404, detail="lala company me job lagegi teri")
+     session.delete(data) 
+     session.commit()
+
+
+
+"""@app.get("/campaigns")
 def campaings():
     return {"message": data}
 
@@ -70,8 +162,6 @@ async def delete_campain(id: int):
           if campain.get("campaign_id") == id:
                data.pop(index)
                return Response(status_code=200)
-     raise HTTPException(status_code=404, detail="Something went wrong")
+          raise HTTPException(status_code=404, detail="Something went wrong")
       
-     
-
-        
+     """
