@@ -1,0 +1,38 @@
+data = [
+    { 
+        "campaign_id": 1,
+        "name": "Summer Lauch",
+        "due_date": datetime.now(),
+        "created_at": datetime.now()
+    },
+    { 
+        "campaign_id": 2,
+        "name": "Monsoon Lauch",
+        "due_date": datetime.now(),
+        "created_at": datetime.now()
+    },
+    { 
+        "campaign_id": 3,
+        "name": "Autumn Lauch",
+        "due_date": datetime.now(),
+        "created_at": datetime.now()
+    },
+    { 
+        "campaign_id": 4,
+        "name": "pre-winter Lauch",
+        "due_date": datetime.now(),
+        "created_at": datetime.now()
+    },
+    { 
+        "campaign_id": 5,
+        "name": "Winter",
+        "due_date": datetime.now(),
+        "created_at": datetime.now()
+    },
+    { 
+        "campaign_id": 6,
+        "name": "Spring lauch",
+        "due_date": datetime.now(),
+        "created_at": datetime.now()
+    }
+]
