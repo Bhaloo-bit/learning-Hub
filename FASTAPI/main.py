@@ -75,7 +75,7 @@ class Responsee(BaseModel, Generic[T]):
         data : T
 
 @app.get("/campaigns", response_model=Responsee[list[Campaign]])
-async def read_campaigns(session: SessionDep):
+async def read_campaigns(session: SessionDep, page: int = Query(ge=1, le=10)):
      data = session.exec(select(Campaign)).all()
      return {"data": data}
 
@@ -117,7 +117,7 @@ async def delete_campaings(id : int, session: SessionDep):
 
 
 
-"""@app.get("/campaigns")
+@app.get("/campaigns")
 def campaings():
     return {"message": data}
 
