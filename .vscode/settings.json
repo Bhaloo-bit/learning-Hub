@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "liveServer.settings.port": 5502
 }
 
@@ -14,4 +15,19 @@
   "emmet.includeLanguages": {
     "django-html": "html"
   }
+=======
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Azure",
+            "database": "chaicode_ecom_db",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ]
+>>>>>>> db263ca (Postgres sql)
 }
