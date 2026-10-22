@@ -19,3 +19,15 @@ o.status, o.order_id,
 e.email, e.first_name
 FROM orders as o
     LEFT JOIN employees as e ON o.employee_id = e.employee_id
+
+SELECT 
+o.status, o.order_id,
+e.email, e.first_name
+FROM orders as o
+    RIGHT JOIN employees as e ON o.employee_id = e.employee_id
+
+SELECT 
+o.status, o.order_id,
+e.email, e.first_name
+FROM orders as o
+    FULL OUTER JOIN employees as e ON o.employee_id = e.employee_id

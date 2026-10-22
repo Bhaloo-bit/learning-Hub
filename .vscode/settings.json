@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-    "liveServer.settings.port": 5502
-}
-
-{
+  "liveServer.settings.port": 5502,
   "tailwindCSS.includeLanguages": {
     "html": "html",
     "django-html": "html",
@@ -14,20 +10,29 @@
   },
   "emmet.includeLanguages": {
     "django-html": "html"
-  }
-=======
-    "sqltools.connections": [
-        {
-            "ssh": "Disabled",
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "driver": "PostgreSQL",
-            "name": "Azure",
-            "database": "chaicode_ecom_db",
-            "username": "postgres",
-            "password": "postgres"
-        }
-    ]
->>>>>>> db263ca (Postgres sql)
+  },
+  "sqltools.connections": [
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "Azure",
+      "database": "chai_ecom_db",
+      "username": "postgres",
+      "password": "postgres"
+    },
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "Azure",
+      "database": "chaicode_ecom_db",
+      "username": "postgres",
+      "password": "postgres"
+    }
+  ]
 }

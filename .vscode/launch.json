@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "configurations": []
 }
+
 {
   "name": "C Dev Environment",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
