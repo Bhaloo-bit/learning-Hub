@@ -125,4 +125,30 @@ WHERE customer_id IN (
 -- Give all the product which are having 
 -- price > average price across all products
 
--- ! pi-100, p2-200, p3= 10000 , p3 = 200
+-- ! pi-100, p2-200, p3= 10000 , p34 =1000, p5 - 900
+--! 1500//4 average -> 375
+-- ! p3, p5 -> returned
+
+SELECT * 
+FROM proudcts
+WHERE price > (
+    SELECT AVG(price)
+    from proudcts
+);
+
+-- ! Give me sale on category level
+-- ! electronics - 3000
+-- ! clothing
+
+SELECT * FROM order
+SELECT * FROM order_items
+
+
+SELECT
+    oi.order_item_id,
+    oi.quantity,
+    oi.unit_price,
+    p.product_name,
+    p.category
+FROM order_items as oi
+LEFT JOIN product as p ON p.product_id = oi.product_id
